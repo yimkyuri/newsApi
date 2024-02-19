@@ -1,5 +1,5 @@
 // const API_KEY = "03e25fa0b75541378d2a78fe07b764c3"
-const keyword = "서울"
+const keyword = "기자"
 let news = [];
 const getLatesNews = async () => {
     // const url = new URL(`https://newsapi.org/v2/top-headlines?country=kr&apiKey=${API_KEY}`);
