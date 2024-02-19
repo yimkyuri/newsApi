@@ -3,7 +3,7 @@ const keyword = "기자"
 let news = [];
 const getLatesNews = async () => {
     // const url = new URL(`https://newsapi.org/v2/top-headlines?country=kr&apiKey=${API_KEY}`);
-    const url = new URL(`https://flourishing-naiad-bdffdd.netlify.app/top-headlines?q=${keyword}`);
+    const url = new URL(`https://flourishing-naiad-bdffdd.netlify.app/top-headlines?page=1&pageSize=20`);
     const response = await fetch(url)
     const data = await response.json()
     news = data.articles;
