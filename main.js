@@ -3,17 +3,45 @@ const keyword = "기자"
 const page = 1
 const pageSize = 2
 let newsList = [];
+const menus = document.querySelectorAll(".menus button");
+document.getElementById("search-input")
+    .addEventListener("keyup", function(e) {
+        if (e.keyCode === 13) {
+            document.getElementById("search-button").click();
+        }
+    });
+
+menus.forEach( menu => menu.addEventListener("click", (event) => getNewsByCategory(event)));
+
 const getLatesNews = async () => {
     // const url = new URL(`https://newsapi.org/v2/top-headlines?country=kr&apiKey=${API_KEY}`);
     const url = new URL(`https://flourishing-naiad-bdffdd.netlify.app/top-headlines`);
-    const response = await fetch(url)
-    const data = await response.json()
+    const response = await fetch(url);
+    const data = await response.json();
     newsList = data.articles;
     render();
     console.log("ddd", newsList);
 
 }
 
+const getNewsByCategory = async (event) => {
+    const category = event.target.textContent.toLowerCase();
+    const url = new URL(`https://flourishing-naiad-bdffdd.netlify.app/top-headlines?category=${category}`);
+    const response = await fetch(url);
+    const data = await response.json();
+    newsList = data.articles;
+    render();
+}
+
+const getNewsByKeyword = async () => {
+    const keyword = document.getElementById("search-input").value;
+    const url = new URL(`https://flourishing-naiad-bdffdd.netlify.app/top-headlines?q=${keyword}`);
+    const response = await fetch(url);
+    const data = await response.json();
+    newsList = data.articles;
+    render();
+    document.getElementById("search-input").value = "";
+}
 const render = () => {
     const newsHTML = newsList.map(news => `
     <article>
