@@ -61,3 +61,21 @@ const render = () => {
     document.getElementById('news-board').innerHTML = newsHTML;
 }
 getLatesNews();
+
+
+function openNav() {
+    document.getElementById("menus").style.transform = "translateX(0)";
+  }
+  
+function closeNav() {
+document.getElementById("menus").style.transform = "translateX(-100%)";
+}
+
+const openSearchBox = () => {
+    let inputArea = document.getElementById("input-area");
+    if (inputArea.style.display === "inline") {
+        inputArea.style.display = "none";
+    } else {
+        inputArea.style.display = "inline";
+    }
+};

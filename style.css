@@ -1,14 +1,28 @@
 html, body {margin:0; padding:0;}
 a {color:#222; text-decoration: inherit;}
-.head-line {margin-top:1em; display: flex; justify-content: center;}
-.menus {margin-top:1em; display: flex; justify-content: center; border-top:1px solid #ebebeb; border-bottom:4px double #222; flex-wrap: wrap;}
+.head-line {margin-top:3em; display: flex; justify-content: center;}
+.menus {margin-top:1em; display: flex; justify-content: center; border-top:1px solid #ebebeb; border-bottom:4px double #222; flex-wrap: wrap; z-index:2;}
 .menus button {background:none; border:none; margin:5px;}
 .menus button:hover {background: skyblue;}
+.menus-close {display:none;}
 .news {border-bottom:2px solid #222; padding:1em 0;}
 .news span {display:inline-block; margin-right:10px; font-weight: bold; color:gray}
 .news-img {width: 100%; max-height: 250px; object-fit: cover;}
 .container {padding-bottom:2em;}
-.search {display:flex; justify-content: center; margin-top:2em;}
-.search input {border:1px solid #222; outline: none;}
+.search {display:flex; justify-content: center; position:absolute; top:0; left:0;}
+.search input {border:1px solid #222; outline: none; margin-left:1em; height:2em;}
 .search input:focus {border:1px solid #222;}
-.search button {background:#222; color:#fff; border:0; margin-left: 10px;}
+.search button {background:#222; color:#fff; border:0; margin-left: 10px; height:2em;}
+.search-button {width:2em; height:2em; background:#222; color:#fff; display:flex; justify-content: center; align-items: center; top:0; left:0;}
+.search-button svg {width:18px; height:18px;}
+.search-button svg g {fill:#fff;}
+.menus-open {display:none;}
+#input-area {display:none;}
+
+@media screen and (max-width: 767px) {
+    .menus {transform: translateX(-100%); position:fixed; width:300px; top:0; left:0; height:100vh; background:skyblue; padding-top:5vw; margin-top:0; align-content: flex-start; transition:0.5 ease;}
+    .menus button {display:block; width:100%; margin:0; padding:2vw 0; border-bottom:1px solid #fff;}
+    .menus-close {display:block; position:absolute; width:3em; height:2.7em; background:#222; color:#fff; display:flex; justify-content: center; align-items: center; right:0; top:0;}
+    .menus-open {position:fixed; width:3em; height:3em; background:#222; color:#fff; display:flex; justify-content: center; align-items: center; top:0; left:0;}
+    .search-button {width:3em; height:3em; margin-left:3.5em;}
+  }
