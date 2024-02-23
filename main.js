@@ -51,6 +51,7 @@ const getNewsByCategory = async (event) => {
     const category = event.target.textContent.toLowerCase();
     url = new URL(`https://flourishing-naiad-bdffdd.netlify.app/top-headlines?category=${category}`);
     getNews();
+    pageClick(1);
 }
 
 const getNewsByKeyword = async () => {
@@ -58,6 +59,7 @@ const getNewsByKeyword = async () => {
     url = new URL(`https://flourishing-naiad-bdffdd.netlify.app/top-headlines?q=${keyword}`);
     getNews();
     document.getElementById("search-input").value = "";
+    pageClick(1);
 }
 
 const openSearchBox = () => {
