@@ -1,9 +1,10 @@
 const API_KEY = "03e25fa0b75541378d2a78fe07b764c3"
 let articles = [];
 let page = 1;
-let totalPage = 1;
-let pageSize = 10;
-let groupSize = 5;
+let totalPages = 1;
+const pageSize = 10;
+const groupSize = 5;
+let totalResults = 0;
 
 let menus = document.querySelectorAll(".menus button");
 document.getElementById("search-input")
@@ -23,14 +24,16 @@ let url = new URL(`https://flourishing-naiad-bdffdd.netlify.app/top-headlines`)
 const getNews = async () => {
     try {
         url.searchParams.set("page", page);
+        url.searchParams.set("pageSize", pageSize);
         let response = await fetch(url);
         let data = await response.json();
+        console.log("ddd", data);
         if (response.status == 200) {
             if (data.totalResults == 0) {
                 throw new Error("표시할 뉴스가 없습니다.");
             }
             articles = data.articles;
-            totalPage = Math.ceil(data.totalResults / pageSize);
+            totalPages = Math.ceil(data.totalResults / pageSize);
             render();
         } else {
             throw new Error(data.message);
@@ -48,18 +51,18 @@ const getLatestNews = async () => {
 }
 
 const getNewsByCategory = async (event) => {
+    page = 1;
     const category = event.target.textContent.toLowerCase();
     url = new URL(`https://flourishing-naiad-bdffdd.netlify.app/top-headlines?category=${category}`);
     getNews();
-    pageClick(1);
 }
 
 const getNewsByKeyword = async () => {
-    const keyword = document.getElementById("search-input").value;
+    page = 1;
+    const keyword = document.getElementById('search-input').value;
     url = new URL(`https://flourishing-naiad-bdffdd.netlify.app/top-headlines?q=${keyword}`);
     getNews();
-    document.getElementById("search-input").value = "";
-    pageClick(1);
+
 }
 
 const openSearchBox = () => {
@@ -93,26 +96,27 @@ const render = () => {
 
 
 const paginationRender = () => {
-    let paginationHTML = ``;
     let pageGroup = Math.ceil(page / groupSize);
     let lastPage = pageGroup * groupSize;
-    if(lastPage > totalPage){
-        lastPage = totalPage;
+    if(lastPage > totalPages){
+        lastPage = totalPages;
     }
     let firstPage = lastPage - (groupSize - 1) <= 0 ? 1 : lastPage - (groupSize - 1); 
 
+    let paginationHTML = ``;
+
     if (firstPage >= 6) {
-        paginationHTML = `<li class="page-item" onclick="pageClick(1)"><a class="page-link">&lt&lt</a></li>
-        <li class="page-item" onclick="pageClick(${page-1})"><a class="page-link">&lt</a></li>`;
+        paginationHTML = `<li class="page-item" onclick="moveToPage(1)"><a class="page-link">&lt&lt</a></li>
+        <li class="page-item" onclick="moveToPage(${page-1})"><a class="page-link">&lt</a></li>`;
     }
     for(let i=firstPage; i<=lastPage; i++){
-        paginationHTML += `<li class="page-item ${i===page? "active" : ""}" onclick="pageClick(${i})"><a class="page-link">${i}</a></li>`
+        paginationHTML += `<li class="page-item ${i===page? "active" : ""}" onclick="moveToPage(${i})"><a class="page-link">${i}</a></li>`
     }
-    if (lastPage < totalPage)
-    paginationHTML+=`<li class="page-item" onclick="pageClick(${page+1})"><a class="page-link">&gt</a></li>
-    <li class="page-item" onclick="pageClick(${totalPage})"><a class="page-link" >&gt&gt</a></li>`;
+    if (lastPage < totalPages)
+    paginationHTML+=`<li class="page-item" onclick="moveToPage(${page+1})"><a class="page-link">&gt</a></li>
+    <li class="page-item" onclick="moveToPage(${totalPages})"><a class="page-link" >&gt&gt</a></li>`;
 
-    if (totalPage > 0 ) {
+    if (totalPages > 0 ) {
         document.querySelector('.pagination').innerHTML = paginationHTML
     }
     
@@ -125,7 +129,7 @@ const errorRender = (errorMessage) => {
 };
 
 
-const pageClick = (pageNum) => {
+const moveToPage = (pageNum) => {
     page = pageNum;
     window.scrollTo({ top: 0, behavior: "smooth" });
     getNews();

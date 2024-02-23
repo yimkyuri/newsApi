@@ -1,6 +1,5 @@
 html, body {margin:0; padding:0;}
 a {color:#222; text-decoration: inherit;}
-a:hover {color:#222; }
 h2 {font-size:1.3em;}
 p {font-size:0.8em;}
 .head-line {margin-top:3em; display: flex; justify-content: center;}
@@ -19,7 +18,7 @@ p {font-size:0.8em;}
 .search-button {width:2em; height:2em; background:#222; color:#fff; display:flex; justify-content: center; align-items: center; top:0; left:0;}
 .search-button svg {width:18px; height:18px;}
 .search-button svg g {fill:#fff;}
-.menus-open {display:none;}
+.menus-open {display:none; z-index:2;}
 #input-area {display:none;}
 .pagination-nav {display: flex; justify-content: center;}
 .pagination {margin-top: 1em;}
@@ -28,9 +27,10 @@ p {font-size:0.8em;}
 
 
 @media screen and (max-width: 767px) {
+  h2 {margin-top:1em;}
     .menus {transform: translateX(-100%); position:fixed; width:300px; top:0; left:0; height:100vh; background:skyblue; padding-top:5vw; margin-top:0; align-content: flex-start; transition:0.5 ease;}
     .menus button {display:block; width:100%; margin:0; padding:2vw 0; border-bottom:1px solid #fff;}
     .menus-close {display:block; position:absolute; width:3em; height:2.7em; background:#222; color:#fff; display:flex; justify-content: center; align-items: center; right:0; top:0;}
     .menus-open {position:fixed; width:3em; height:3em; background:#222; color:#fff; display:flex; justify-content: center; align-items: center; top:0; left:0;}
-    .search-button {width:3em; height:3em; margin-left:3.5em;}
+    .search-button {width:3em; height:3em; margin-left:3.5em; }
   }
