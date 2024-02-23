@@ -18,6 +18,11 @@ a {color:#222; text-decoration: inherit;}
 .search-button svg g {fill:#fff;}
 .menus-open {display:none;}
 #input-area {display:none;}
+.pagination-nav {display: flex; justify-content: center;}
+.pagination {margin-top: 1em;}
+.page-item.active .page-link{background-color: skyblue; color: #fff; border-color: skyblue;}
+.page-link{ color:skyblue }
+
 
 @media screen and (max-width: 767px) {
     .menus {transform: translateX(-100%); position:fixed; width:300px; top:0; left:0; height:100vh; background:skyblue; padding-top:5vw; margin-top:0; align-content: flex-start; transition:0.5 ease;}
