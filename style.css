@@ -1,11 +1,14 @@
 html, body {margin:0; padding:0;}
 a {color:#222; text-decoration: inherit;}
+a:hover {color:#222; }
+h2 {font-size:1.3em;}
+p {font-size:0.8em;}
 .head-line {margin-top:3em; display: flex; justify-content: center;}
 .menus {margin-top:1em; display: flex; justify-content: center; border-top:1px solid #ebebeb; border-bottom:4px double #222; flex-wrap: wrap; z-index:2;}
 .menus button {background:none; border:none; margin:5px;}
 .menus button:hover {background: skyblue;}
 .menus-close {display:none;}
-.news {border-bottom:2px solid #222; padding:1em 0;}
+.news {border-bottom:1px solid #eeeeee; padding:1em 0;}
 .news span {display:inline-block; margin-right:10px; font-weight: bold; color:gray}
 .news-img {width: 100%; max-height: 250px; object-fit: cover;}
 .container {padding-bottom:2em;}
@@ -20,8 +23,8 @@ a {color:#222; text-decoration: inherit;}
 #input-area {display:none;}
 .pagination-nav {display: flex; justify-content: center;}
 .pagination {margin-top: 1em;}
-.page-item.active .page-link{background-color: skyblue; color: #fff; border-color: skyblue;}
-.page-link{ color:skyblue }
+.page-item.active .page-link{background-color: #222; color: #fff; border-color: #222;}
+.page-link{ color:#222 ; cursor: pointer;}
 
 
 @media screen and (max-width: 767px) {

@@ -1,4 +1,4 @@
-// const API_KEY = "03e25fa0b75541378d2a78fe07b764c3"
+const API_KEY = "03e25fa0b75541378d2a78fe07b764c3"
 let articles = [];
 let page = 1;
 let totalPage = 1;
@@ -17,8 +17,8 @@ menus.forEach( menu =>
     menu.addEventListener("click", (event) => getNewsByCategory(event))
 );
 
-// let url = new URL(`https://newsapi.org/v2/top-headlines?country=kr&apiKey=${API_KEY}`);
-let url = new URL(`https://flourishing-naiad-bdffdd.netlify.app/top-headlines`)
+let url = new URL(`https://newsapi.org/v2/top-headlines?country=kr&apiKey=${API_KEY}`);
+// let url = new URL(`https://flourishing-naiad-bdffdd.netlify.app/top-headlines`)
 
 const getNews = async () => {
     try {
@@ -77,15 +77,10 @@ const render = () => {
             <img class="news-img" src="${news.urlToImage}" alt="">
         </div>
         <div class="col-lg-7">
-            <h2><a href="${news.url}" target="_blank">${news.title}</a></h2>
-            <p>${
-                news.description == null || news.description == ""
-                  ? "내용없음"
-                  : news.description.length > 200
-                  ? news.description.substring(0, 200) + "..."
-                  : news.description
-              }</p>
-            <div><span>${news.source.name}</span> ${news.publishedAt}</div>
+            <h2><a href="${news.url}" target="_blank">${news.title.length > 30 ? news.title.substring(0, 30) + "..." : news.title}</a></h2>
+            <p>${ news.description == null || news.description == "" ? "내용없음" : news.description.length > 200
+                  ? news.description.substring(0, 200) + "..." : news.description }</p>
+            <div><span>${news.source.name}</span> ${moment( news.publishedAt ).fromNow()}</div>
         </div>
     </article>
     `}).join('');
