@@ -17,8 +17,8 @@ menus.forEach( menu =>
     menu.addEventListener("click", (event) => getNewsByCategory(event))
 );
 
-let url = new URL(`https://newsapi.org/v2/top-headlines?country=kr&apiKey=${API_KEY}`);
-// let url = new URL(`https://flourishing-naiad-bdffdd.netlify.app/top-headlines`)
+// let url = new URL(`https://newsapi.org/v2/top-headlines?country=kr&apiKey=${API_KEY}`);
+let url = new URL(`https://flourishing-naiad-bdffdd.netlify.app/top-headlines`)
 
 const getNews = async () => {
     try {
