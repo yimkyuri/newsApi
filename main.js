@@ -89,7 +89,7 @@ const render = () => {
             </p>
             <div class="btn-area">
                 <p class="name">${news.source.name}</p>
-                <button class="btn-go" onclick="window.open('${news.url}')">뉴스 자세히보기 ></button>
+                <button class="btn-go" onclick="window.open('${news.url}')">자세히보기 ></button>
             </div>
         </div>
     </li>
