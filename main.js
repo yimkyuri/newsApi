@@ -68,10 +68,10 @@ const getNewsByKeyword = async () => {
 
 const openSearchBox = () => {
     let inputArea = document.getElementById("input-area");
-    if (inputArea.classList.container("open") === "true") {
-        inputArea.classList.remove("open");
+    if (inputArea.style.display === "flex") {
+        inputArea.style.display = "none";
     } else {
-        inputArea.classList.add("open");
+        inputArea.style.display = "flex";
     }
 };
 
