@@ -69,9 +69,11 @@ button {cursor: pointer; background:none; border:none;}
     .header .menus li {padding:2vw 4vw; font-size:1.3em;}
     .open-menus { display:block; font-size: 5.2vw; position:absolute; left:2em; top:50%; transform: translateY(-50%);}
     .close-menus { display: block; font-size: 4vw; position:absolute; right:2em; top:1.5em; color:#fff;}
+    .close-menus i {color:#fff;}
     .news-list li {width: 98%; border-radius: 30px;}
     .news-area .img-area {height:40vw;}
     .header .search-area .input-area input {width:100px;}
     .news-area .text-area .title {font-size:1.2em;}
     .news-area .img-area {border-radius: 30px;}
+    .pagination li {margin:0 0.2em; width:8vw; height:8vw; font-size:1em;}
 }
