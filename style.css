@@ -2,6 +2,7 @@
 ul {list-style: none;}
 a {color:inherit; outline: none;}
 button {cursor: pointer; background:none; border:none;}
+.notice {width:100%; padding:2em; background:#fff; text-align: center; border-radius: 20px;}
 
 .inner {max-width: 1200px; margin:0 auto; padding:2em;}
 

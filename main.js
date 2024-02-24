@@ -130,7 +130,7 @@ const paginationRender = () => {
 
 
 const errorRender = (errorMessage) => {
-    document.getElementById("news-board").innerHTML = `<h3 class="text-center alert alert-danger mt-1">${errorMessage}</h3>`;
+    document.getElementById("news-board").innerHTML = `<div class="notice">${errorMessage}</div>`;
 };
 
 
