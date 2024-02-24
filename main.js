@@ -2,11 +2,12 @@ const API_KEY = "03e25fa0b75541378d2a78fe07b764c3"
 let articles = [];
 let page = 1;
 let totalPages = 1;
-const pageSize = 10;
+const pageSize = 9;
 const groupSize = 5;
 let totalResults = 0;
+let wframe = window.innerWidth;
 
-let menus = document.querySelectorAll(".menus button");
+let menus = document.querySelectorAll(".menus li");
 document.getElementById("search-input")
     .addEventListener("keyup", function(e) {
         if (e.keyCode === 13) {
@@ -67,27 +68,31 @@ const getNewsByKeyword = async () => {
 
 const openSearchBox = () => {
     let inputArea = document.getElementById("input-area");
-    if (inputArea.style.display === "inline") {
-        inputArea.style.display = "none";
+    if (inputArea.classList.container("open") === "true") {
+        inputArea.classList.remove("open");
     } else {
-        inputArea.style.display = "inline";
+        inputArea.classList.add("open");
     }
 };
 
 
 const render = () => {
     const resultHTML = articles.map(news => { return `
-    <article class="row news">
-        <div class="col-lg-5">
-            <img class="news-img" src="${news.urlToImage}" alt="">
+    <li>
+        <div class="img-area"><img src="${news.urlToImage}" alt=""></div>
+        <div class="text-area">
+            <p class="date">${moment( news.publishedAt ).fromNow()}</p>
+            <p class="title">${news.title}</p>
+            <p class="des">
+                ${ news.description == null || news.description == "" ? "내용없음" : news.description.length > 200
+                ? news.description.substring(0, 200) + "..." : news.description }
+            </p>
+            <div class="btn-area">
+                <p class="name">${news.source.name}</p>
+                <button class="btn-go" onclick="window.open('${news.url}')">뉴스 자세히보기 ></button>
+            </div>
         </div>
-        <div class="col-lg-7">
-            <h2><a href="${news.url}" target="_blank">${news.title.length > 30 ? news.title.substring(0, 30) + "..." : news.title}</a></h2>
-            <p>${ news.description == null || news.description == "" ? "내용없음" : news.description.length > 200
-                  ? news.description.substring(0, 200) + "..." : news.description }</p>
-            <div><span>${news.source.name}</span> ${moment( news.publishedAt ).fromNow()}</div>
-        </div>
-    </article>
+    </li>
     `}).join('');
 
     document.getElementById('news-board').innerHTML = resultHTML;
@@ -136,11 +141,28 @@ const moveToPage = (pageNum) => {
 };
 
 function openNav() {
-    document.getElementById("menus").style.transform = "translateX(0)";
+    if (wframe <= 768) {
+        document.getElementById("menus").style.left = 0;
+    }
 }
   
 function closeNav() {
-    document.getElementById("menus").style.transform = "translateX(-100%)";
+    if (wframe <= 768) {
+        document.getElementById("menus").style.left = "-70vw";
+    }
 }
+
+function handleResize() {
+    wframe = window.innerWidth
+    console.log(wframe);
+    if (wframe > 767) {
+        openNav()
+    } else {
+        closeNav()
+    }
+  }
+
+window.addEventListener("resize", handleResize);
+
 
 getLatestNews();  

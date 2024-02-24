@@ -1,36 +1,65 @@
-html, body {margin:0; padding:0;}
-a {color:#222; text-decoration: inherit;}
-h2 {font-size:1.3em;}
-p {font-size:0.8em;}
-.head-line {margin-top:3em; display: flex; justify-content: center;}
-.menus {margin-top:1em; display: flex; justify-content: center; border-top:1px solid #ebebeb; border-bottom:4px double #222; flex-wrap: wrap; z-index:2;}
-.menus button {background:none; border:none; margin:5px;}
-.menus button:hover {background: skyblue;}
-.menus-close {display:none;}
-.news {border-bottom:1px solid #eeeeee; padding:1em 0;}
-.news span {display:inline-block; margin-right:10px; font-weight: bold; color:gray}
-.news-img {width: 100%; max-height: 250px; object-fit: cover;}
-.container {padding-bottom:2em;}
-.search {display:flex; justify-content: center; position:absolute; top:0; left:0;}
-.search input {border:1px solid #222; outline: none; margin-left:1em; height:2em;}
-.search input:focus {border:1px solid #222;}
-.search button {background:#222; color:#fff; border:0; margin-left: 10px; height:2em;}
-.search-button {width:2em; height:2em; background:#222; color:#fff; display:flex; justify-content: center; align-items: center; top:0; left:0;}
-.search-button svg {width:18px; height:18px;}
-.search-button svg g {fill:#fff;}
-.menus-open {display:none; z-index:2;}
-#input-area {display:none;}
-.pagination-nav {display: flex; justify-content: center;}
-.pagination {margin-top: 1em;}
-.page-item.active .page-link{background-color: #222; color: #fff; border-color: #222;}
-.page-link{ color:#222 ; cursor: pointer;}
+* {margin:0; padding:0;}
+ul {list-style: none;}
+a {color:inherit; outline: none;}
+button {cursor: pointer; background:none; border:none;}
+
+.inner {max-width: 1200px; margin:0 auto; padding:2em;}
+
+.container {background:#edeff2; font-size:18px}
+.header {background:#fff; box-shadow: 0 5px 15px rgba(0,0,0,0.05);}
+.header .inner {display: flex; align-items: center; position:relative;}
+.header .logo {min-width: 150px; font-size: 2em; font-weight: 800;}
+.header .menus {display: flex; gap: 8px; flex-wrap: wrap; transition: 0.3s ease-in-out;}
+.header .menus li {padding:10px 20px; background:#edeff2; border-radius: 50px; cursor: pointer; margin:0 0.1em; }
+.open-menus,
+.close-menus {display: none;}
+.header .search-area {position:absolute; right:2em; top:2em;}
+.header .search-area .input-area { border:1px solid #c6c6c6; border-radius: 50px; overflow: hidden; padding:2px 6px 2px 10px; font-size: 1em;}
+.header .search-area .input-area input {border:none; padding:10px; width:100px}
+.header .search-area .input-area input:focus {border:none;}
+.header .search-area .input-area button {background:#212938; color:#fff; border:none; padding:8px; border-radius: 50px;}
+
+.news-area .inner {margin-bottom:2em;}
+.news-list {display: flex; flex-wrap: wrap; gap:22px 2%;}
+.news-list li {width:30%; background:#fff; padding:1%; border-radius: 40px; box-shadow: 5px 5px 15px rgba(0,0,0,0.05);}
+.news-area .img-area {position:relative; overflow: hidden; border-radius: 40px; height:200px; background:#eaeaea;}
+.news-area .img-area::after {content:''; width:100%; height:100%; top:0; left:0; position: absolute; background: linear-gradient(rgba(0,0,0,0) 70%, rgba(0,0,0,.7)) }
+.news-area .img-area img {width:100%; min-height: 100%; object-fit:cover;}
+.news-area .text-area {padding:1em; position:relative; margin-top:0.5em;}
+.news-area .text-area .date {position:absolute; top:-2em; right:2em; color:#fff; font-weight: 600;}
+.news-area .text-area .title {font-size: 1.3em; margin-bottom:10px; font-weight: 600;white-space: normal; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;}
+.news-area .text-area .des { font-size: 1em; color:#7c7c7c; white-space: normal; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;}
+.news-area .btn-area {margin-top:25px; display: flex; justify-content: space-between; align-items: center; color:#212938; font-weight: 700; text-transform: uppercase; font-size: 0.8em;}
+.news-area .btn-area button {display:inline-block; border:1px solid #7c7c7c; padding:10px 20px; color:#212938; font-weight:700; border-radius: 50px;}
+
+.pagination-nav {padding:3em 0 2em;}
+.pagination {display: flex; justify-content: center;}
+.pagination li {display:flex; align-items: center; justify-content: center; margin:0 0.4em; width:35px; height:35px; background:#fff; border-radius: 50%; cursor: pointer; color:#7c7c7c;}
+.pagination li.active {background:#212938; color:#fff;}
+
+.footer {background:#c5cbd4}
 
 
-@media screen and (max-width: 767px) {
-  h2 {margin-top:1em;}
-    .menus {transform: translateX(-100%); position:fixed; width:300px; top:0; left:0; height:100vh; background:skyblue; padding-top:5vw; margin-top:0; align-content: flex-start; transition:0.5 ease;}
-    .menus button {display:block; width:100%; margin:0; padding:2vw 0; border-bottom:1px solid #fff;}
-    .menus-close {display:block; position:absolute; width:3em; height:2.7em; background:#222; color:#fff; display:flex; justify-content: center; align-items: center; right:0; top:0;}
-    .menus-open {position:fixed; width:3em; height:3em; background:#222; color:#fff; display:flex; justify-content: center; align-items: center; top:0; left:0;}
-    .search-button {width:3em; height:3em; margin-left:3.5em; }
-  }
+
+
+@media all and (max-width: 1250px) {
+    .header .inner {flex-direction: column; align-items: flex-start;}
+    .header .menus {margin-top:1em;}
+}
+
+@media all and (max-width: 1024px) {
+    .news-list li {width: 47%;}
+    .news-area .img-area {height:23vw;}
+}
+
+
+@media all and (max-width: 767px) {
+    .header .inner {align-items: center;}
+    .header .menus {position:fixed; width:60vw; background:#212938; top:0; left:-70vw; margin:0; flex-direction: column; gap:2vw; padding:15vw 5vw 8vw; z-index: 2;}
+    .header .menus::before {content:'Category'; position:absolute; top:1.7em; left:2em; color:#fff; font-size: 1.4em; text-transform: uppercase;}
+    .header .menus li {padding:2vw 4vw; font-size:1.3em;}
+    .open-menus { display:block; font-size: 3.2vw; position:absolute; left:2em; top:50%; transform: translateY(-50%);}
+    .close-menus { display: block; font-size: 4vw; position:absolute; right:2em; top:1.5em; color:#fff;}
+    .news-list li {width: 98%;}
+    .news-area .img-area {height:40vw;}
+}
