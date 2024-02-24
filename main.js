@@ -56,6 +56,7 @@ const getNewsByCategory = async (event) => {
     const category = event.target.textContent.toLowerCase();
     url = new URL(`https://flourishing-naiad-bdffdd.netlify.app/top-headlines?category=${category}`);
     getNews();
+   closeNav();
 }
 
 const getNewsByKeyword = async () => {
