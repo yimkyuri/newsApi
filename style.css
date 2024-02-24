@@ -25,6 +25,7 @@ button {cursor: pointer; background:none; border:none;}
 .header .search-area .input-area input {width:140px; height:40px; border:1px solid #c6c6c6; border-radius: 50px; overflow: hidden; padding:2px 6px 2px 10px; font-size: 1em;}
 .header .search-area .input-area input:focus {border:none;}
 .header .search-area button {background:#212938; color:#fff; border:none; width:40px; height:40px; border-radius: 50px; display: flex; align-items: center; justify-content: center; margin-left: 10px;}
+.header .search-area button i {color:#fff;}
 
 .news-area .inner {margin-bottom:2em;}
 .news-list {display: flex; flex-wrap: wrap; gap:22px 2%;}
