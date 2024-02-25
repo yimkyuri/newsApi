@@ -53,10 +53,13 @@ const getLatestNews = async () => {
 
 const getNewsByCategory = async (event) => {
     page = 1;
+
+    menus.forEach(item => {item.className =""});
+    event.target.className = "selected";
     const category = event.target.textContent.toLowerCase();
     url = new URL(`https://flourishing-naiad-bdffdd.netlify.app/top-headlines?category=${category}`);
     getNews();
-   closeNav();
+    closeNav();
 }
 
 const getNewsByKeyword = async () => {
@@ -68,11 +71,16 @@ const getNewsByKeyword = async () => {
 }
 
 const openSearchBox = () => {
+    let openSearch = document.getElementById("open-search");
     let inputArea = document.getElementById("input-area");
     if (inputArea.style.display === "flex") {
         inputArea.style.display = "none";
+        openSearch.style.backgroundColor = "#212938";
+        openSearch.innerHTML = "<i class='fa-solid fa-magnifying-glass'></i>";
     } else {
         inputArea.style.display = "flex";
+        openSearch.style.backgroundColor = "#bbb";
+        openSearch.innerHTML = "<i class='fa-solid fa-xmark'></i>";
     }
 };
 
@@ -142,28 +150,12 @@ const moveToPage = (pageNum) => {
 };
 
 function openNav() {
-    if (wframe <= 768) {
-        document.getElementById("menus").style.left = 0;
-    }
+    document.getElementById("menus").style.left = 0;
 }
   
 function closeNav() {
-    if (wframe <= 768) {
-        document.getElementById("menus").style.left = "-70vw";
-    }
+    document.getElementById("menus").style.left = "-70vw";
 }
-
-function handleResize() {
-    wframe = window.innerWidth
-    console.log(wframe);
-    if (wframe > 767) {
-        openNav()
-    } else {
-        closeNav()
-    }
-  }
-
-window.addEventListener("resize", handleResize);
 
 
 getLatestNews();  

@@ -18,6 +18,7 @@ button {cursor: pointer; background:none; border:none;}
 .header .logo {min-width: 150px; font-size: 2em; font-weight: 800;}
 .header .menus {display: flex; gap: 8px; flex-wrap: wrap; transition: 0.3s ease-in-out;}
 .header .menus li {padding:10px 20px; background:#edeff2; border-radius: 50px; cursor: pointer; margin:0 0.1em; }
+.header .menus li.selected {background:#5e84a6; color:#fff;}
 .open-menus,
 .close-menus {display: none;}
 .header .search-area {position:absolute; right:2em; top:2em; display: flex;}
@@ -30,11 +31,11 @@ button {cursor: pointer; background:none; border:none;}
 .news-area .inner {margin-bottom:2em;}
 .news-list {display: flex; flex-wrap: wrap; gap:22px 2%;}
 .news-list li {width:30%; background:#fff; padding:1%; border-radius: 40px; box-shadow: 5px 5px 15px rgba(0,0,0,0.05);}
-.news-area .img-area {position:relative; overflow: hidden; border-radius: 40px; height:200px; background:#eaeaea;}
-.news-area .img-area::after {content:''; width:100%; height:100%; top:0; left:0; position: absolute; background: linear-gradient(rgba(0,0,0,0) 70%, rgba(0,0,0,.7)) }
+.news-area .img-area {position:relative; overflow: hidden; border-radius: 40px; height:250px; background:#eaeaea  url(images/bg.jpg) no-repeat center;}
+.news-area .img-area::after {content:''; width:100%; height:100%; top:0; left:0; position: absolute; background: linear-gradient(rgba(0,0,0,0) 70%, rgba(0,0,0,.7)); }
 .news-area .img-area img {width:100%; min-height: 100%; object-fit:cover;}
 .news-area .text-area {padding:1em; position:relative; margin-top:0.5em;}
-.news-area .text-area .date {position:absolute; top:-2em; right:2em; color:#fff; font-weight: 600;}
+.news-area .text-area .date {position:absolute; top:-2.5em; right:2em; color:#fff; font-weight: 600;}
 .news-area .text-area .title {font-size: 1.3em; margin-bottom:10px; font-weight: 600;white-space: normal; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;}
 .news-area .text-area .des { font-size: 1em; color:#7c7c7c; white-space: normal; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;}
 .news-area .btn-area {margin-top:25px; display: flex; justify-content: space-between; align-items: center; color:#212938; font-weight: 700; text-transform: uppercase; font-size: 0.8em;}
@@ -66,7 +67,7 @@ button {cursor: pointer; background:none; border:none;}
     .header .inner {align-items: center;}
     .header .menus {position:fixed; width:60vw; background:#212938; top:0; left:-70vw; margin:0; flex-direction: column; gap:2vw; padding:15vw 5vw 8vw; z-index: 2;}
     /* .header .menus::before {content:'Category'; position:absolute; top:1.7em; left:2em; color:#fff; font-size: 1.4em; text-transform: uppercase;} */
-    .header .menus li {padding:2vw 4vw; font-size:1.3em;}
+    .header .menus li {padding:2vw 4vw; font-size:1.3em; background:none; color:#fff;}
     .open-menus { display:block; font-size: 5.2vw; position:absolute; left:2em; top:50%; transform: translateY(-50%);}
     .close-menus { display: block; font-size: 4vw; position:absolute; right:2em; top:1.5em; color:#fff;}
     .close-menus i {color:#fff;}
@@ -75,5 +76,5 @@ button {cursor: pointer; background:none; border:none;}
     .header .search-area .input-area input {width:100px;}
     .news-area .text-area .title {font-size:1.2em;}
     .news-area .img-area {border-radius: 30px;}
-    .pagination li {margin:0 0.2em; width:8vw; height:8vw; font-size:1em;}
+    .pagination li {margin:0 0.2em; width:7vw; height:7vw; font-size:1em;}
 }
